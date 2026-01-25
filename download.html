@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download TickerMind - AI Stock Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Cyberpunk Theme Enhancements */
+        .cyberpunk-gradient {
+            background: linear-gradient(135deg, #0B0E14 0%, #1a1f2e 50%, #2d1b4e 100%);
+        }
+        
+        .cyberpunk-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cyberpunk-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(19, 127, 236, 0.1) 0%, transparent 70%),
+                        radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 70%),
+                        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cyberpunk-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #1e40af, #3b82f6, #8b5cf6, #ec4899);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .cyberpunk-tagline {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px rgba(148, 163, 184, 0.3);
+        }
+        
+        .download-container {
+            max-width: 600px;
+            margin: 3rem auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .download-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .download-card {
+            background: rgba(28, 33, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .download-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+            background-size: 200% 200%;
+            border-radius: 16px;
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+        
+        .download-card:hover::before {
+            opacity: 1;
+        }
+        
+        .store-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .store-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .store-desc {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .download-btn:hover::before {
+            left: 100%;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+        
+        .features-section {
+            max-width: 800px;
+            margin: 4rem auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background: rgba(28, 33, 39, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-3px);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #3b82f6;
+        }
+        
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-desc {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cyberpunk-title {
+                font-size: 2.5rem;
+            }
+            
+            .cyberpunk-tagline {
+                font-size: 1.2rem;
+            }
+            
+            .download-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .download-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="cyberpunk-gradient">
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">TickerMind</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="download.html" class="active">Download</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="cyberpunk-hero">
+            <div class="container hero-content">
+                <h1 class="cyberpunk-title">TickerMind</h1>
+                <p class="cyberpunk-tagline">AI-Powered Stock Market Analysis</p>
+                <p class="description">Unlock the power of artificial intelligence for smarter investment decisions. Download TickerMind today and start analyzing stocks with cutting-edge AI technology.</p>
+            </div>
+        </section>
+
+        <section class="container download-container">
+            <div class="download-grid">
+                <!-- App Store Download -->
+                <a href="https://apps.apple.com/app/6757994475" target="_blank" class="download-card">
+                    <div class="store-icon">🍎</div>
+                    <h3 class="store-name">App Store</h3>
+                    <p class="store-desc">Download for iOS devices</p>
+                    <span class="download-btn">Download Now</span>
+                </a>
+                
+                <!-- Google Play Download -->
+                <a href="#" class="download-card">
+                    <div class="store-icon">🤖</div>
+                    <h3 class="store-name">Google Play</h3>
+                    <p class="store-desc">Coming soon</p>
+                    <span class="download-btn">Coming Soon</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="container features-section">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Powered by AI</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Real-time Analysis</h3>
+                    <p class="feature-desc">Get instant insights on market trends and stock performance</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3 class="feature-title">AI Predictions</h3>
+                    <p class="feature-desc">Leverage machine learning for accurate stock forecasts</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Smart Dashboard</h3>
+                    <p class="feature-desc">Intuitive interface with personalized investment metrics</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 TickerMind. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="disclaimer.html">Disclaimer</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
