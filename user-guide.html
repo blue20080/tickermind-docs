@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TickerMind - 用户说明书</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #22d3ee;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        section {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(34, 211, 238, 0.1);
+        }
+
+        h2 {
+            color: #22d3ee;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h3 {
+            color: #60a5fa;
+            font-size: 1.3rem;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin: 15px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: #cbd5e1;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li i {
+            color: #22d3ee;
+            margin-top: 4px;
+        }
+
+        .highlight {
+            background: rgba(34, 211, 238, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #22d3ee;
+            margin: 20px 0;
+        }
+
+        .warning {
+            background: rgba(251, 191, 36, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #fbbf24;
+            margin: 20px 0;
+        }
+
+        .success {
+            background: rgba(34, 197, 94, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #22c55e;
+            margin: 20px 0;
+        }
+
+        .tier-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .tier-card.premium {
+            border-color: #fbbf24;
+            background: rgba(251, 191, 36, 0.05);
+        }
+
+        .tier-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #22d3ee;
+            margin-bottom: 10px;
+        }
+
+        .tier-card.premium .tier-name {
+            color: #fbbf24;
+        }
+
+        .tier-price {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 15px;
+        }
+
+        .tier-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tier-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tier-features li i {
+            color: #22c55e;
+        }
+
+        .step {
+            background: rgba(34, 211, 238, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 3px solid #22d3ee;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #22d3ee;
+            color: #0f172a;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .faq-item {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            color: #60a5fa;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .contact-info a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TickerMind</h1>
+            <p class="subtitle">AI驱动的股票市场分析助手</p>
+        </header>
+
+        <section>
+            <h2><i class="fas fa-info-circle"></i> 应用简介</h2>
+            <p>TickerMind是一款基于人工智能技术的股票市场分析应用，旨在为投资者提供智能化的市场洞察和分析工具。通过先进的AI算法，我们帮助用户更好地理解市场动态，做出更明智的投资决策。</p>
+            <div class="highlight">
+                <p><strong>重要提示：</strong>本应用提供的所有分析和建议仅供参考，不构成投资建议。投资有风险，入市需谨慎。请在做出任何投资决策前进行充分的研究，并咨询专业的财务顾问。</p>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-star"></i> 主要功能</h2>
+            
+            <h3>1. 股票搜索</h3>
+            <ul class="feature-list">
+                <li><i class="fas fa-search"></i> 快速搜索全球股票、ETF和其他金融产品</li>
+                <li><i class="fas fa-history"></i> 自动保存搜索历史，方便快速访问</li>
+                <li><i class="fas fa-globe"></i> 支持美股主板（NASDAQ、NYSE、AMEX）和其他市场</li>
+                <li><i class="fas fa-dollar-sign"></i> 智能识别美元计价资产</li>
+            </ul>
+
+            <h3>2. AI智能分析</h3>
+            <ul class="feature-list">
+                <li><i class="fas fa-brain"></i> AI评分系统：综合基本面、技术面和市场情绪给出0-100分的评分</li>
+                <li><i class="fas fa-chart-line"></i> 价格走势图：展示历史价格变化趋势</li>
+                <li><i class="fas fa-robot"></i> AI深度分析：提供详细的市场分析和投资观点</li>
+                <li><i class="fas fa-exclamation-triangle"></i> 风险因素：识别并提示潜在的投资风险</li>
+            </ul>
+
+            <h3>3. 技术指标</h3>
+            <ul class="feature-list">
+                <li><i class="fas fa-chart-bar"></i> K线图：专业的蜡烛图展示，支持OHLC数据</li>
+                <li><i class="fas fa-clock"></i> 多时间范围：1周、1月、3月、6月、1年</li>
+                <li><i class="fas fa-tachometer-alt"></i> RSI、SMA、EMA、MACD等技术指标</li>
+                <li><i class="fas fa-palette"></i> 颜色编码：直观显示超买/超卖状态</li>
+            </ul>
+
+            <h3>4. 基本面分析</h3>
+            <ul class="feature-list">
+                <li><i class="fas fa-building"></i> 公司信息：CEO、员工数、总部位置等</li>
+                <li><i class="fas fa-coins"></i> 财务指标：市值、Beta、股息、IPO日期等</li>
+                <li><i class="fas fa-calculator"></i> 估值指标：EV/EBITDA、ROE、FCF收益率等</li>
+                <li><i class="fas fa-file-alt"></i> 公司简介：详细的业务描述和行业信息</li>
+            </ul>
+
+            <h3>5. 市场新闻</h3>
+            <ul class="feature-list">
+                <li><i class="fas fa-newspaper"></i> 最新新闻：实时获取相关公司的新闻资讯</li>
+                <li><i class="fas fa-image"></i> 新闻图片：图文并茂的新闻展示</li>
+                <li><i class="fas fa-clock"></i> 时间标记：显示新闻发布时间</li>
+                <li><i class="fas fa-link"></i> 来源追踪：显示新闻发布机构</li>
+            </ul>
+
+            <h3>6. AI选股（Mind Picks）</h3>
+            <ul class="feature-list">
+                <li><i class="fas fa-magic"></i> AI筛选：基于技术分析筛选优质股票</li>
+                <li><i class="fas fa-tags"></i> 分类标签：成长型、价值型、动量型、股息型</li>
+                <li><i class="fas fa-percentage"></i> 置信度评分：显示AI推荐的置信度</li>
+                <li><i class="fas fa-file-contract"></i> 详细报告：每只股票都有详细的AI分析报告</li>
+            </ul>
+            <div class="warning">
+                <p><strong>注意：</strong>AI选股功能仅供学习参考，不构成投资建议。请始终进行自己的研究并咨询专业财务顾问。</p>
+            </div>
+
+            <h3>7. 分享功能</h3>
+            <ul class="feature-list">
+                <li><i class="fas fa-share-alt"></i> 分享应用：将应用分享给朋友</li>
+                <li><i class="fas fa-gift"></i> 奖励机制：分享可获得免费查询次数</li>
+                <li><i class="fas fa-qrcode"></i> 二维码分享：生成包含二维码的分享图片</li>
+                <li><i class="fas fa-chart-pie"></i> 每日限制：每天最多3次分享奖励</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-user-circle"></i> 订阅计划</h2>
+            <p>TickerMind提供多种订阅计划，满足不同用户的需求：</p>
+
+            <div class="tier-card">
+                <div class="tier-name">免费版</div>
+                <div class="tier-price">免费</div>
+                <ul class="tier-features">
+                    <li><i class="fas fa-check"></i> 每天1次股票分析</li>
+                    <li><i class="fas fa-check"></i> 基本股票搜索功能</li>
+                    <li><i class="fas fa-check"></i> 查看股票基本信息</li>
+                    <li><i class="fas fa-check"></i> 分享应用获得奖励</li>
+                </ul>
+            </div>
+
+            <div class="tier-card premium">
+                <div class="tier-name">Pro 周刊</div>
+                <div class="tier-price">$9.99/周</div>
+                <ul class="tier-features">
+                    <li><i class="fas fa-check"></i> 每天10次股票分析</li>
+                    <li><i class="fas fa-check"></i> 所有免费版功能</li>
+                    <li><i class="fas fa-check"></i> 完整的AI分析报告</li>
+                    <li><i class="fas fa-check"></i> 技术指标和基本面分析</li>
+                    <li><i class="fas fa-check"></i> 市场新闻查看</li>
+                </ul>
+            </div>
+
+            <div class="tier-card premium">
+                <div class="tier-name">Pro 月刊</div>
+                <div class="tier-price">$19.99/月</div>
+                <ul class="tier-features">
+                    <li><i class="fas fa-check"></i> 每天20次股票分析</li>
+                    <li><i class="fas fa-check"></i> 所有Pro周刊功能</li>
+                    <li><i class="fas fa-check"></i> 相比周刊节省50%</li>
+                    <li><i class="fas fa-check"></i> 更高的每日使用限额</li>
+                </ul>
+            </div>
+
+            <div class="tier-card premium">
+                <div class="tier-name">Pro 年刊</div>
+                <div class="tier-price">$99.99/年</div>
+                <ul class="tier-features">
+                    <li><i class="fas fa-check"></i> 每天50次股票分析</li>
+                    <li><i class="fas fa-check"></i> 所有Pro月刊功能</li>
+                    <li><i class="fas fa-check"></i> 相比周刊节省81%</li>
+                    <li><i class="fas fa-check"></i> AI选股（Mind Picks）功能</li>
+                    <li><i class="fas fa-check"></i> 最高每日使用限额</li>
+                </ul>
+            </div>
+
+            <div class="success">
+                <p><strong>订阅说明：</strong></p>
+                <ul>
+                    <li>订阅将自动续费，除非在当前期间结束前至少24小时取消</li>
+                    <li>您的账户将在当前期间结束前24小时内收取续费费用</li>
+                    <li>您可以随时在iTunes或Google Play账户设置中管理或取消订阅</li>
+                    <li>如果提供免费试用，未使用的部分将在购买订阅时失效</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-book"></i> 使用指南</h2>
+
+            <h3>如何搜索股票</h3>
+            <div class="step">
+                <p><span class="step-number">1</span>打开应用，进入"搜索"页面</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">2</span>在搜索框中输入股票代码或公司名称</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">3</span>从搜索结果中选择您要查看的股票</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">4</span>查看详细的股票分析报告</p>
+            </div>
+
+            <h3>如何查看AI分析</h3>
+            <div class="step">
+                <p><span class="step-number">1</span>在股票详情页查看AI评分仪表盘</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">2</span>阅读AI深度分析报告</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">3</span>查看风险因素和投资建议</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">4</span>参考技术指标和基本面数据</p>
+            </div>
+
+            <h3>如何使用K线图</h3>
+            <div class="step">
+                <p><span class="step-number">1</span>在股票详情页找到"PRICE CHART"部分</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">2</span>选择时间范围（1周、1月、3月、6月、1年）</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">3</span>查看K线图的价格走势</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">4</span>绿色表示上涨，红色表示下跌</p>
+            </div>
+
+            <h3>如何查看AI选股</h3>
+            <div class="step">
+                <p><span class="step-number">1</span>进入"AI Picks"页面</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">2</span>浏览AI筛选的股票列表</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">3</span>点击股票查看详细分析报告</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">4</span>注意：此功能需要Pro年刊订阅</p>
+            </div>
+
+            <h3>如何分享应用</h3>
+            <div class="step">
+                <p><span class="step-number">1</span>进入"设置"页面</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">2</span>点击"分享应用"选项</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">3</span>选择分享方式（微信、短信等）</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">4</span>分享成功后获得免费查询次数奖励</p>
+            </div>
+
+            <h3>如何订阅Pro计划</h3>
+            <div class="step">
+                <p><span class="step-number">1</span>进入"设置"页面</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">2</span>点击"Upgrade to Pro"按钮</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">3</span>选择适合您的订阅计划</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">4</span>完成支付即可享受Pro功能</p>
+            </div>
+
+            <h3>如何管理订阅</h3>
+            <div class="step">
+                <p><span class="step-number">1</span>进入"设置"页面</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">2</span>点击"管理订阅"选项</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">3</span>跳转到App Store或Google Play订阅管理页面</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">4</span>可以取消订阅或更改计划</p>
+            </div>
+
+            <h3>如何恢复购买</h3>
+            <div class="step">
+                <p><span class="step-number">1</span>进入"设置"页面</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">2</span>点击"恢复购买"选项</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">3</span>系统会查找您之前的购买记录</p>
+            </div>
+            <div class="step">
+                <p><span class="step-number">4</span>找到后会自动恢复您的订阅状态</p>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-question-circle"></i> 常见问题</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: 数据更新频率是多少？</div>
+                <p>A: 股票价格数据延迟至少15分钟。AI分析和新闻会定期更新，具体频率取决于市场情况和数据源。</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: 免费用户每天可以分析多少次股票？</div>
+                <p>A: 免费用户每天可以分析1次股票。Pro周刊用户每天10次，Pro月刊用户每天20次，Pro年刊用户每天50次。</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: 如何查看每日使用情况？</div>
+                <p>A: 在"设置"页面可以看到您的订阅状态、每日使用量和剩余次数。</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: AI选股功能如何使用？</div>
+                <p>A: AI选股（Mind Picks）功能仅对Pro年订用户开放。订阅后，您可以在"AI Picks"页面查看AI筛选的股票列表和详细分析。</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: 分享应用有什么奖励？</div>
+                <p>A: 每天分享应用最多可以获得3次免费查询次数奖励。分享后系统会自动将奖励添加到您的账户。</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: 如何取消订阅？</div>
+                <p>A: 您可以在App Store或Google Play的订阅管理页面取消订阅。取消后，您仍可享受订阅直到当前期间结束。</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: 换设备后如何恢复订阅？</div>
+                <p>A: 使用相同的Apple ID或Google账户登录新设备，然后在"设置"页面点击"恢复购买"即可。</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: 应用支持哪些市场？</div>
+                <p>A: 应用主要支持美股市场，包括NASDAQ、NYSE、AMEX等主要交易所。其他市场的股票可能也能搜索到，但分析功能可能有限。</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: AI分析的准确性如何？</div>
+                <p>A: AI分析基于历史数据和技术指标，仅供参考，不构成投资建议。市场存在不确定性，请结合自己的研究和专业建议做出投资决策。</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: 如何联系客服？</div>
+                <p>A: 您可以通过应用内的反馈功能或发送邮件到我们的客服邮箱联系我们。</p>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-shield-alt"></i> 免责声明</h2>
+            <div class="warning">
+                <p><strong>重要免责声明：</strong></p>
+                <ul>
+                    <li>本应用提供的所有信息、分析和建议仅供参考，不构成任何投资建议、推荐或要约。</li>
+                    <li>股票市场投资存在风险，过去的表现不代表未来的结果。</li>
+                    <li>AI分析基于历史数据和技术指标，可能无法准确预测市场变化。</li>
+                    <li>用户应自行承担所有投资决策的风险和责任。</li>
+                    <li>在做出任何投资决策前，请进行充分的研究，并咨询专业的财务顾问。</li>
+                    <li>本应用不对任何因使用本应用信息而导致的投资损失承担责任。</li>
+                    <li>数据可能存在延迟，实际价格可能与显示价格不同。</li>
+                    <li>用户应遵守当地法律法规，确保投资行为合法合规。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-envelope"></i> 联系我们</h2>
+            <p>如果您有任何问题、建议或反馈，欢迎通过以下方式联系我们：</p>
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> 邮箱：support@tickermind.com</p>
+                <p><i class="fas fa-globe"></i> 网站：<a href="https://blue20080.github.io/tickermind-docs/" target="_blank">https://blue20080.github.io/tickermind-docs/</a></p>
+                <p><i class="fab fa-apple"></i> App Store：<a href="https://apps.apple.com/app/6757994475" target="_blank">https://apps.apple.com/app/6757994475</a></p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 TickerMind. All rights reserved.</p>
+            <p>本说明书最后更新：2024年1月</p>
+        </footer>
+    </div>
+</body>
+</html>
